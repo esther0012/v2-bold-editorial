@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Referência Capital — Invista em Imóveis no Brasil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css">
+<style>
+:root{
+  --black:#0A0A0A;
+  --off-white:#F9F6F0;
+  --gold:#B8862E;
+  --gold-pale:#F4E8CC;
+  --mid-gray:#888;
+  --light-gray:#E8E4DD;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--off-white);color:var(--black);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--off-white);border-bottom:1px solid var(--light-gray);padding:0 60px;height:64px;display:flex;align-items:center;justify-content:space-between;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;letter-spacing:0.04em;}
+.logo-text span{color:var(--gold);}
+nav a.cta{background:var(--black);color:var(--off-white);padding:10px 26px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background .2s;}
+nav a.cta:hover{background:var(--gold);}
+
+/* HERO */
+.hero{padding-top:64px;background:var(--black);min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:0.25;}
+.hero-content{position:relative;z-index:2;display:grid;grid-template-columns:7fr 3fr;gap:40px;align-items:flex-end;padding:80px 60px 100px;}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,88px);line-height:1.0;font-weight:300;color:var(--off-white);letter-spacing:-0.01em;}
+.hero-h1 em{font-style:italic;color:var(--gold);}
+.hero-sidebar{display:flex;flex-direction:column;gap:24px;padding-bottom:12px;}
+.hero-sidebar .side-label{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(249,246,240,0.4);margin-bottom:6px;}
+.hero-sidebar .side-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.hero-sidebar .side-list li{font-size:14px;color:rgba(249,246,240,0.75);border-left:2px solid var(--gold);padding-left:12px;}
+.hero-cta-row{position:relative;z-index:2;background:var(--gold);padding:24px 60px;display:flex;align-items:center;justify-content:space-between;}
+.hero-cta-row p{font-size:15px;color:var(--black);font-weight:500;}
+.hero-cta-row a{background:var(--black);color:var(--gold);padding:14px 36px;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all .2s;}
+.hero-cta-row a:hover{background:#1a1a1a;}
+
+/* TRUST BAR */
+.trust-bar{background:var(--off-white);border-bottom:1px solid var(--light-gray);padding:28px 60px;display:flex;align-items:center;gap:60px;overflow-x:auto;}
+.trust-item-bar{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.trust-item-bar .icon{width:40px;height:40px;background:var(--gold-pale);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.trust-item-bar .label{font-size:14px;font-weight:500;white-space:nowrap;}
+.trust-item-bar .sub{font-size:12px;color:var(--mid-gray);}
+
+/* PARCELAS */
+.parcelas{padding:100px 60px;background:var(--off-white);}
+.editorial-title{margin-bottom:64px;}
+.editorial-title .eyebrow{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.editorial-title h2{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,58px);font-weight:300;line-height:1.15;color:var(--black);}
+.editorial-title h2 strong{font-weight:600;}
+.parcelas-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.p-card{background:var(--black);color:var(--off-white);padding:52px 48px;position:relative;overflow:hidden;}
+.p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent);}
+.p-card-title{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;letter-spacing:0.08em;color:rgba(249,246,240,0.5);text-transform:uppercase;margin-bottom:10px;}
+.p-card-main{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:40px;}
+.p-card-main sup{font-size:24px;}
+.currency-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(249,246,240,0.08);}
+.currency-row .c-name{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(249,246,240,0.4);}
+.currency-row .c-val{font-size:16px;font-weight:500;color:var(--off-white);}
+
+/* FORM */
+.form-section{background:var(--black);padding:100px 60px;}
+.form-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;}
+.form-left h2{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,56px);font-weight:300;color:var(--off-white);line-height:1.15;margin-bottom:30px;}
+.form-left p{font-size:15px;color:rgba(249,246,240,0.55);line-height:1.9;margin-bottom:40px;}
+.stat-row{display:flex;gap:40px;}
+.stat-box{text-align:center;}
+.stat-box .num{font-family:'Cormorant Garamond',serif;font-size:42px;color:var(--gold);}
+.stat-box .lbl{font-size:11px;color:rgba(249,246,240,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;}
+#FORM{border:1px solid rgba(249,246,240,0.1);padding:52px;}
+#FORM .f-title{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--off-white);margin-bottom:36px;}
+.fg{margin-bottom:22px;}
+.fg label{display:block;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(249,246,240,0.4);margin-bottom:8px;}
+.fg input,.fg select{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(249,246,240,0.15);color:var(--off-white);padding:12px 0;font-size:15px;font-family:'DM Sans';outline:none;transition:border-color .2s;}
+.fg input:focus,.fg select:focus{border-bottom-color:var(--gold);}
+.fg select option{background:var(--black);}
+.submit{width:100%;background:var(--gold);color:var(--black);padding:18px;font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;border:none;cursor:pointer;font-family:'DM Sans';transition:all .3s;margin-top:16px;}
+.submit:hover{background:#d4a040;}
+
+/* STEPS */
+.steps{padding:100px 60px;background:var(--off-white);}
+.steps-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--light-gray);margin-top:64px;}
+.step-cell{background:var(--off-white);padding:56px 40px;}
+.step-cell .s-num{font-family:'Cormorant Garamond',serif;font-size:96px;font-weight:300;color:var(--light-gray);line-height:1;margin-bottom:-20px;}
+.step-cell h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;color:var(--black);margin-bottom:16px;position:relative;}
+.step-cell h3::after{content:'';display:block;width:40px;height:2px;background:var(--gold);margin-top:10px;}
+.step-cell p{font-size:14px;color:var(--mid-gray);line-height:1.8;}
+
+/* PRESS */
+.press{padding:70px 60px;background:var(--black);text-align:center;}
+.press-eyebrow{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(249,246,240,0.35);margin-bottom:48px;}
+.press-row{display:flex;justify-content:center;align-items:center;gap:56px;flex-wrap:wrap;}
+.press-item{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:rgba(249,246,240,0.25);transition:color .2s;}
+.press-item:hover{color:var(--gold);}
+
+/* FEATURES */
+.features{padding:100px 60px;background:var(--off-white);}
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:64px;}
+.feat-item{}
+.feat-item .number{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:16px;}
+.feat-item h3{font-size:16px;font-weight:700;color:var(--black);margin-bottom:10px;}
+.feat-item p{font-size:14px;color:var(--mid-gray);line-height:1.8;}
+
+/* TESTIMONIALS */
+.testimonials{padding:100px 60px;background:var(--black);}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:64px;}
+.test-item{padding:36px;border:1px solid rgba(249,246,240,0.08);transition:border-color .2s;}
+.test-item:hover{border-color:var(--gold);}
+.test-quote{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(249,246,240,0.7);line-height:1.8;margin-bottom:24px;}
+.test-person{display:flex;align-items:center;gap:14px;}
+.test-avatar{width:44px;height:44px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--black);font-style:italic;}
+.test-info .name{font-size:13px;font-weight:700;color:var(--off-white);}
+.test-info .loc{font-size:12px;color:rgba(249,246,240,0.4);}
+
+/* WHY */
+.why{padding:100px 60px;background:var(--off-white);}
+.why-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.why-left .eyebrow{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.why-left h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3.5vw,52px);font-weight:300;color:var(--black);line-height:1.15;margin-bottom:24px;}
+.why-left p{font-size:15px;color:var(--mid-gray);line-height:1.9;}
+.why-right{display:flex;flex-direction:column;gap:2px;}
+.why-block{background:var(--black);padding:32px 36px;border-left:3px solid var(--gold);}
+.why-block .wnum{font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--gold);}
+.why-block p{font-size:13px;color:rgba(249,246,240,0.55);margin-top:6px;line-height:1.7;}
+
+/* COMPARISON */
+.comparison{padding:100px 60px;background:var(--black);}
+.comp-max{max-width:680px;margin:0 auto;}
+.comp-table{width:100%;margin-top:48px;border-collapse:collapse;}
+.comp-table th{padding:14px 20px;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(249,246,240,0.4);text-align:center;}
+.comp-table th:first-child{text-align:left;}
+.comp-table th.rfc{color:var(--gold);}
+.comp-table td{padding:14px 20px;border-bottom:1px solid rgba(249,246,240,0.06);font-size:14px;text-align:center;color:rgba(249,246,240,0.6);}
+.comp-table td:first-child{text-align:left;}
+.check{color:var(--gold);}
+.cross{color:rgba(255,255,255,0.15);}
+.comp-cta{text-align:center;margin-top:48px;}
+.btn-gold{background:var(--gold);color:var(--black);padding:18px 48px;font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .3s;}
+.btn-gold:hover{background:#d4a040;}
+
+/* CTA BANNER */
+.cta-banner{background:var(--gold-pale);border-top:3px solid var(--gold);padding:80px 60px;display:grid;grid-template-columns:2fr 1fr;gap:60px;align-items:center;}
+.cta-banner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3.5vw,50px);font-weight:300;color:var(--black);line-height:1.15;}
+.cta-banner p{font-size:15px;color:var(--mid-gray);margin-top:16px;}
+.cta-banner-right{display:flex;flex-direction:column;gap:16px;align-items:flex-end;}
+.btn-dark{background:var(--black);color:var(--off-white);padding:18px 36px;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;text-align:center;transition:background .2s;}
+.btn-dark:hover{background:var(--gold);}
+
+/* ABOUT */
+.about{padding:100px 60px;background:var(--off-white);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-img{position:relative;}
+.about-img img{width:100%;height:460px;object-fit:cover;}
+.about-img .label-overlay{position:absolute;bottom:0;left:0;right:0;background:var(--gold);padding:16px 24px;font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--black);}
+.about-right .eyebrow{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.about-right h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3vw,46px);font-weight:300;line-height:1.2;margin-bottom:20px;}
+.about-right p{font-size:15px;color:var(--mid-gray);line-height:1.9;}
+
+/* FOOTER */
+footer{background:var(--black);color:rgba(249,246,240,0.45);padding:60px 60px 40px;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;padding-bottom:48px;border-bottom:1px solid rgba(249,246,240,0.08);}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--gold);margin-bottom:16px;font-style:italic;}
+.footer-desc{font-size:12px;line-height:1.9;}
+.footer-col h4{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(249,246,240,0.35);margin-bottom:14px;}
+.footer-col p,.footer-col a{font-size:13px;color:rgba(249,246,240,0.45);line-height:1.8;text-decoration:none;display:block;}
+.footer-bottom{padding-top:24px;font-size:11px;}
+
+@media(max-width:900px){
+  nav{padding:0 24px;}
+  .hero-content{grid-template-columns:1fr;padding:40px 24px 60px;}
+  .hero-cta-row{padding:20px 24px;flex-direction:column;gap:16px;text-align:center;}
+  .trust-bar{padding:20px 24px;gap:24px;}
+  .parcelas{padding:70px 24px;}
+  .parcelas-grid{grid-template-columns:1fr;}
+  .form-section{padding:70px 24px;}
+  .form-inner{grid-template-columns:1fr;gap:50px;}
+  .steps{padding:70px 24px;}
+  .steps-row{grid-template-columns:1fr;background:none;}
+  .step-cell{border:1px solid var(--light-gray);margin-bottom:1px;}
+  .press{padding:60px 24px;}
+  .features{padding:70px 24px;}
+  .feat-grid{grid-template-columns:1fr 1fr;}
+  .testimonials{padding:70px 24px;}
+  .test-grid{grid-template-columns:1fr;}
+  .why{padding:70px 24px;}
+  .why-inner{grid-template-columns:1fr;gap:50px;}
+  .comparison{padding:70px 24px;}
+  .cta-banner{grid-template-columns:1fr;padding:60px 24px;}
+  .cta-banner-right{align-items:flex-start;}
+  .about{grid-template-columns:1fr;padding:70px 24px;}
+  footer{padding:50px 24px 30px;}
+  .footer-top{grid-template-columns:1fr;}
+}
+
+.iti {
+  width: 100%;
+  display: block;
+}
+
+.iti input,
+.iti input[type="tel"] {
+  width: 100% !important;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(249,246,240,0.15) !important;
+  color: var(--off-white) !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  padding-left: 90px !important;
+  font-size: 15px !important;
+  font-family: 'DM Sans', sans-serif !important;
+  outline: none !important;
+}
+
+.iti input:focus {
+  border-bottom-color: var(--gold) !important;
+}
+
+.iti__flag-container {
+  color: #000;
+}
+
+.iti__selected-flag {
+  background: transparent !important;
+  padding-left: 0 !important;
+  padding-right: 12px !important;
+}
+
+.iti__country-list {
+  color: #000;
+  z-index: 9999;
+}
+
+.iti__country {
+  color: #000;
+}
+
+.iti__dial-code {
+  color: #555;
+}
+</style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '1761905857999115');
+    fbq('track', 'PageView');
+  </script>
+
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=1761905857999115&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<nav>
+  <div class="logo-text">Referência <span>Capital</span></div>
+  <a href="#FORM" class="cta">Simular Agora</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=70" alt="">
+  </div>
+  <div class="hero-content">
+    <div>
+      <h1 class="hero-h1">Invista de forma inteligente em imóveis no Brasil e aumente sua renda com <em>aluguéis</em></h1>
+    </div>
+    <div class="hero-sidebar">
+      <div class="side-label">Vantagens</div>
+      <ul class="side-list">
+        <li>Sem burocracia</li>
+        <li>Menores taxas de juros</li>
+        <li>Suporte especializado</li>
+        <li>A partir de R$ 2.000/mês</li>
+      </ul>
+    </div>
+  </div>
+  <div class="hero-cta-row">
+    <p>Crédito imobiliário desenvolvido para brasileiros que moram no exterior</p>
+    <a href="#FORM">Faça sua Simulação</a>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-item-bar">
+    <div class="icon">⏱</div>
+    <div><div class="label">24h</div><div class="sub">Pré-aprovação</div></div>
+  </div>
+  <div class="trust-item-bar">
+    <div class="icon">💰</div>
+    <div><div class="label">Até R$4M</div><div class="sub">Valor de crédito</div></div>
+  </div>
+  <div class="trust-item-bar">
+    <div class="icon">📅</div>
+    <div><div class="label">240 meses</div><div class="sub">Para pagar</div></div>
+  </div>
+  <div class="trust-item-bar">
+    <div class="icon">🌍</div>
+    <div><div class="label">100% Online</div><div class="sub">De qualquer país</div></div>
+  </div>
+</div>
+
+<section class="press">
+  <div class="press-eyebrow">O que falam sobre a Referência Capital</div>
+  <div class="press-row">
+    <div class="press-item">Metrópoles</div>
+    <div class="press-item">Exame</div>
+    <div class="press-item">InfoMoney</div>
+    <div class="press-item">Estadão</div>
+    <div class="press-item">Valor Econômico</div>
+  </div>
+</section>
+
+<section class="parcelas" id="EXEMPLOS">
+  <div class="editorial-title">
+    <div class="eyebrow">Simulação de parcelas</div>
+    <h2><strong>Parcelas mensais</strong> que se<br>adequam aos seus sonhos</h2>
+  </div>
+  <div class="parcelas-grid">
+    <div class="p-card">
+      <div class="p-card-title">Imóvel de R$ 500 mil · Parcela mensal</div>
+      <div class="p-card-main"><sup>R$</sup>2.291</div>
+      <div class="currency-row"><span class="c-name">🇺🇸 Dólar</span><span class="c-val">US$ 464,00</span></div>
+      <div class="currency-row"><span class="c-name">🇪🇺 Euro</span><span class="c-val">€ 431,00</span></div>
+      <div class="currency-row"><span class="c-name">🇯🇵 Iene</span><span class="c-val">¥ 67.842,00</span></div>
+    </div>
+    <div class="p-card">
+      <div class="p-card-title">Imóvel de R$ 1 Milhão · Parcela mensal</div>
+      <div class="p-card-main"><sup>R$</sup>4.582</div>
+      <div class="currency-row"><span class="c-name">🇺🇸 Dólar</span><span class="c-val">US$ 928,00</span></div>
+      <div class="currency-row"><span class="c-name">🇪🇺 Euro</span><span class="c-val">€ 862,00</span></div>
+      <div class="currency-row"><span class="c-name">🇯🇵 Iene</span><span class="c-val">¥ 135.684,00</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="form-section">
+  <div class="form-inner">
+    <div class="form-left">
+      <h2>Fale com um especialista</h2>
+      <p>Nossa equipe está pronta para encontrar as melhores condições para o seu perfil e agendar uma reunião personalizada.</p>
+      <div class="stat-row">
+        <div class="stat-box"><div class="num">+200</div><div class="lbl">Clientes</div></div>
+        <div class="stat-box"><div class="num">24h</div><div class="lbl">Resposta</div></div>
+        <div class="stat-box"><div class="num">R$1B+</div><div class="lbl">Em crédito</div></div>
+      </div>
+    </div>
+    <form id="FORM">
+      <div class="f-title">Simule seu Investimento</div>
+
+      <div class="fg">
+        <label>Nome completo</label>
+        <input type="text" name="nome" placeholder="Seu nome" required>
+      </div>
+
+      <div class="fg">
+        <label>Capacidade de investimento mensal</label>
+        <select name="capacidadeInvestimento" required>
+          <option value="">Selecione uma opção</option>
+          <option value="Até R$2.000">Até R$2.000</option>
+          <option value="De R$2.000 a R$3.000">De R$2.000 a R$3.000</option>
+          <option value="De R$3.000 a R$5.000">De R$3.000 a R$5.000</option>
+          <option value="Acima de R$5.000">Acima de R$5.000</option>
+        </select>
+      </div>
+
+      <div class="fg">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="seu@email.com" required>
+      </div>
+
+      <div class="fg">
+        <label>Telefone / WhatsApp</label>
+        <input type="tel" id="telefone" name="telefone" placeholder="Digite seu WhatsApp" required>
+      </div>
+
+      <button type="submit" class="submit">Quero ser Contatado →</button>
+    </form>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="editorial-title">
+    <div class="eyebrow">Como funciona</div>
+    <h2>Passo a passo para adquirir o seu Imóvel</h2>
+  </div>
+  <div class="steps-row">
+    <div class="step-cell">
+      <div class="s-num">01</div>
+      <h3>Preencha o Formulário</h3>
+      <p>Informe seus dados e nossa equipe entrará em contato para entender suas necessidades e agendar uma reunião.</p>
+    </div>
+    <div class="step-cell">
+      <div class="s-num">02</div>
+      <h3>Escolha seu Imóvel e documentação</h3>
+      <p>Selecione o imóvel ideal e envie os documentos necessários com nosso suporte completo e especializado.</p>
+    </div>
+    <div class="step-cell">
+      <div class="s-num">03</div>
+      <h3>Compra do seu Imóvel</h3>
+      <p>Finalize a compra com total segurança e comece a construir seu patrimônio e renda passiva no Brasil.</p>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="editorial-title">
+    <div class="eyebrow">Diferenciais</div>
+    <h2>O crédito imobiliário desenvolvido para<br>brasileiros que moram no exterior</h2>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-item">
+      <div class="number">240</div>
+      <h3>Meses para pagar</h3>
+      <p>Pague em até 20 anos, de acordo com as suas necessidades e o seu conforto.</p>
+    </div>
+    <div class="feat-item">
+      <div class="number">R$4M</div>
+      <h3>Valor de crédito</h3>
+      <p>Altos valores na modalidade de empréstimo mais vantajosa do mercado!</p>
+    </div>
+    <div class="feat-item">
+      <div class="number">24h</div>
+      <h3>Mais Velocidade</h3>
+      <p>A Referência Capital pré-aprova seu crédito em menos de 24 horas.</p>
+    </div>
+    <div class="feat-item">
+      <div class="number">0</div>
+      <h3>Menos Burocracia</h3>
+      <p>A documentação é simplificada e todo o empréstimo acontece 100% online.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="editorial-title" style="color:var(--off-white)">
+    <div class="eyebrow">Depoimentos</div>
+    <h2 style="color:var(--off-white)">O que os nossos clientes falam?</h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-item">
+      <div class="test-quote">"Processo incrível, simples e rápido. Consegui meu imóvel em São Paulo sem precisar voltar ao Brasil."</div>
+      <div class="test-person"><div class="test-avatar">M</div><div class="test-info"><div class="name">Marcelo F.</div><div class="loc">🇺🇸 Estados Unidos</div></div></div>
+    </div>
+    <div class="test-item">
+      <div class="test-quote">"A equipe foi extremamente atenciosa. Minha parcela em libras é muito menor do que eu imaginava."</div>
+      <div class="test-person"><div class="test-avatar">A</div><div class="test-info"><div class="name">Ana Paula S.</div><div class="loc">🇬🇧 Reino Unido</div></div></div>
+    </div>
+    <div class="test-item">
+      <div class="test-quote">"Melhor investimento que fiz. Com a desvalorização do Real, meu imóvel já valorizou muito em 1 ano."</div>
+      <div class="test-person"><div class="test-avatar">R</div><div class="test-info"><div class="name">Roberto C.</div><div class="loc">🇦🇪 Emirados Árabes</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="why-inner">
+    <div class="why-left">
+      <div class="eyebrow">Por que investir em imóveis?</div>
+      <h2>Investir em imóveis no Brasil vai te permitir construir a sua liberdade financeira em poucos anos</h2>
+      <p>O mercado imobiliário brasileiro é um dos que mais cresce no mundo e o Real é uma moeda super desvalorizada. Assim, você pode lucrar de duas formas simultâneas e construir um grande patrimônio com baixo investimento mensal.</p>
+    </div>
+    <div class="why-right">
+      <div class="why-block">
+        <div class="wnum">+83%</div>
+        <p>dos nossos clientes compram imóveis para gerar renda passiva com aluguéis</p>
+      </div>
+      <div class="why-block">
+        <div class="wnum">R$4M</div>
+        <p>Limite de crédito disponível para expatriados — sem necessidade de presença física</p>
+      </div>
+      <div class="why-block">
+        <div class="wnum">100%</div>
+        <p>online — desde a simulação até a assinatura do contrato</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="comparison">
+  <div class="comp-max">
+    <div class="editorial-title" style="color:var(--off-white)">
+      <div class="eyebrow">Comparativo</div>
+      <h2 style="color:var(--off-white)">Utilize o crédito como quiser</h2>
+    </div>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Vantagens</th>
+          <th class="rfc">Referência Capital</th>
+          <th>Outros</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Sem juros abusivos</td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+        <tr><td>Múltiplos países de origem</td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+        <tr><td>Flexibilidade de uso</td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+        <tr><td>Documentação simplificada</td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+        <tr><td>Investimento personalizado</td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+        <tr><td>Suporte em idiomas</td><td><span class="check">✓</span></td><td><span class="cross">✗</span></td></tr>
+      </tbody>
+    </table>
+    <div class="comp-cta">
+      <a href="#FORM" class="btn-gold">SIMULE AGORA</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div>
+    <h2>Temos o empréstimo<br>que você precisa</h2>
+    <p>Atendimento exclusivo para brasileiros no exterior. Comece hoje.</p>
+  </div>
+  <div class="cta-banner-right">
+    <a href="#FORM" class="btn-dark">SIMULE AGORA</a>
+  </div>
+</section>
+
+<section class="about">
+  <div class="about-img">
+    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Equipe Referência Capital">
+    <div class="label-overlay">Somos o ecossistema que acelera seu crescimento patrimonial.</div>
+  </div>
+  <div class="about-right">
+    <div class="eyebrow">Sobre nós</div>
+    <h2>Somos o ecossistema que acelera seu crescimento patrimonial.</h2>
+    <p>A Referência Capital é um ecossistema financeiro focado na democratização e aceleração do crescimento patrimonial. Nossa missão é conectar brasileiros no exterior ao mercado imobiliário nacional, democratizando o acesso às finanças mais sofisticadas.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Referência Capital</div>
+      <p class="footer-desc">A Referência Capital não é uma instituição financeira e não realiza operações de crédito diretamente. Somos uma plataforma que atua como correspondente bancário para facilitar o processo de contratação de empréstimos.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Nosso Escritório</h4>
+      <p>Taguatinga Shopping, QS 01, Rua 210, Torre B, Salas 1305–1308, Águas Claras - DF</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <p>(61) 3030-2556</p>
+      <a href="mailto:vendas@referenciacapital.com.br">vendas@referenciacapital.com.br</a>
+    </div>
+  </div>
+  <div class="footer-bottom">CNPJ 44.118.658/0001-78 · Copyright © 2024 · Referência Capital é parte da Referência Holding</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+<script src="https://unpkg.com/libphonenumber-js@1.10.60/bundle/libphonenumber-js.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const telefoneInput = document.querySelector('#telefone');
+
+    if (!telefoneInput || typeof window.intlTelInput !== 'function') {
+      console.error('intl-tel-input não carregou corretamente.');
+      return;
+    }
+
+    const iti = window.intlTelInput(telefoneInput, {
+      initialCountry: 'br',
+      preferredCountries: ['br', 'us', 'pt', 'ca', 'gb', 'jp', 'ae'],
+      separateDialCode: true,
+      nationalMode: true,
+      autoPlaceholder: 'aggressive',
+      formatOnDisplay: true
+    });
+
+    function formatarTelefoneInternacional() {
+      const paisSelecionado = iti.getSelectedCountryData();
+      const paisIso2 = paisSelecionado.iso2 ? paisSelecionado.iso2.toUpperCase() : 'BR';
+
+      const apenasNumeros = telefoneInput.value.replace(/\D/g, '');
+
+      if (!apenasNumeros) {
+        telefoneInput.value = '';
+        return;
+      }
+
+      if (window.libphonenumber && window.libphonenumber.AsYouType) {
+        const formatter = new window.libphonenumber.AsYouType(paisIso2);
+        telefoneInput.value = formatter.input(apenasNumeros);
+      } else {
+        telefoneInput.value = apenasNumeros;
+      }
+    }
+
+    telefoneInput.addEventListener('input', formatarTelefoneInternacional);
+
+    telefoneInput.addEventListener('countrychange', function() {
+      telefoneInput.value = '';
+      telefoneInput.focus();
+    });
+
+    document.getElementById('FORM').addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      const form = event.target;
+
+      const webhookUrl = 'https://nitro-app.referenciacapital.tech/webhook/leadsLP';
+      const obrigadoUrl = 'https://referenciacapital.com.br/investimento-estrangeiros-obrigado/';
+
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return '';
+      }
+
+      function getUrlParams() {
+        const params = new URLSearchParams(window.location.search);
+
+        return {
+          utmSource: window.location.href,
+          utm_source: params.get('utm_source') || '',
+          utm_medium: params.get('utm_medium') || '',
+          utm_campaign: params.get('utm_campaign') || '',
+          utm_content: params.get('utm_content') || '',
+          utm_term: params.get('utm_term') || '',
+          utm_id: params.get('utm_id') || '',
+          fbclid: params.get('fbclid') || ''
+        };
+      }
+
+      const urlParams = getUrlParams();
+      const paisSelecionado = iti.getSelectedCountryData();
+      const paisIso2 = paisSelecionado.iso2 ? paisSelecionado.iso2.toUpperCase() : 'BR';
+
+      let telefoneCompleto = telefoneInput.value;
+
+      if (telefoneInput.value.trim() && window.libphonenumber) {
+        try {
+          const phoneNumber = window.libphonenumber.parsePhoneNumberFromString(
+                  telefoneInput.value,
+                  paisIso2
+          );
+
+          if (phoneNumber && phoneNumber.isValid()) {
+            telefoneCompleto = phoneNumber.number;
+          } else {
+            telefoneCompleto = '+' + paisSelecionado.dialCode + telefoneInput.value.replace(/\D/g, '');
+          }
+        } catch (error) {
+          telefoneCompleto = '+' + paisSelecionado.dialCode + telefoneInput.value.replace(/\D/g, '');
+        }
+      }
+
+      const payload = {
+        nome: form.elements['nome'] ? form.elements['nome'].value : '',
+        telefone: telefoneCompleto,
+        telefoneFormatado: telefoneInput.value,
+        email: form.elements['email'] ? form.elements['email'].value : '',
+        capacidadeInvestimento: form.elements['capacidadeInvestimento'] ? form.elements['capacidadeInvestimento'].value : '',
+
+        produto: 'Consórcio Exterior',
+
+        ddi: paisSelecionado.dialCode ? '+' + paisSelecionado.dialCode : '',
+        pais: paisSelecionado.name || '',
+        paisIso2: paisSelecionado.iso2 || '',
+
+        utmSource: urlParams.utmSource,
+        utm_source: urlParams.utm_source,
+        utm_medium: urlParams.utm_medium,
+        utm_campaign: urlParams.utm_campaign,
+        utm_content: urlParams.utm_content,
+        utm_term: urlParams.utm_term,
+        utm_id: urlParams.utm_id,
+        fbclid: urlParams.fbclid,
+
+        _fbc: getCookie('_fbc'),
+        _fbp: getCookie('_fbp'),
+
+        trafficSource: urlParams.utm_source ? 'Paid' : 'Organic',
+        first_traffic_source: urlParams.utm_source ? 'Paid' : 'Organic',
+
+        pagina: window.location.href
+      };
+
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead');
+      }
+
+      try {
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'api-key': 'n8n.uA5GXxCvJrsexY$et9PyrScGy-nitro'
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch (error) {
+        console.error('Erro ao enviar lead para o webhook:', error);
+      }
+
+      window.location.href = obrigadoUrl;
+    });
+  });
+</script>
+</body>
+</html>
